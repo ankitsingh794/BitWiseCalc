@@ -1,12 +1,41 @@
-# React + Vite
+# BitWiseCalc
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**BitWiseCalc** is a high-performance web calculator that performs mathematical operations using **bit manipulation techniques**. Built with **React** and **Framer Motion**, it offers fast and educational insights into how binary-level arithmetic works.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- **Bitwise Arithmetic**: Addition, Subtraction, Multiplication, Division using bit logic
+- **Bitwise Operations**: AND, OR, XOR, NOT, Left/Right Shifts
+- **Number Checker Tools**:
+  - Even/Odd check
+  - Power of Two detection
+  - Set Bits count
+- **Binary Display**: Visualizes numbers in binary form
+- **Real-Time Animations** with Framer Motion
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## Tech Stack
+
+- **Frontend**: React (Vite)
+- **Styling**: CSS (no utility framework)
+- **Animation**: Framer Motion
+- **Version Control**: Git & GitHub
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js and npm installed
+
+### Installation
+
+```bash
+git clone https://github.com/yourusername/bitwisecalc.git
+cd bitwisecalc
+npm install
+npm run dev
