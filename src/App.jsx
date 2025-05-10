@@ -1,7 +1,6 @@
 // src/App.jsx
 import React, { useState } from "react";
 import StandardPage from "./pages/StandardPage";
-import "./App.css";
 
 
 const App = () => {
