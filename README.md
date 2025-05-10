@@ -35,7 +35,7 @@
 ### Installation
 
 ```bash
-git clone https://github.com/yourusername/bitwisecalc.git
+git clone https://github.com/ankitsingh794/bitwisecalc.git
 cd bitwisecalc
 npm install
 npm run dev
