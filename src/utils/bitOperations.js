@@ -46,3 +46,42 @@ export function modPowerOfTwo(a, b) {
 export function isPowerOfTwo(n) {
   return n > 0 && (n & (n - 1)) === 0;
 }
+
+// Multiply two numbers using bitwise operations
+export function bitwiseMultiply(a, b) {
+  let result = 0;
+  let multiplier = b;
+
+  while (multiplier > 0) {
+    if (multiplier & 1) result += a;
+    multiplier >>= 1;
+    a <<= 1;
+  }
+
+  return result;
+}
+
+// Divide two numbers using bitwise operations
+export function bitwiseDivide(a, b) {
+  if (b === 0) {
+    throw new Error("Division by zero is not allowed.");
+  }
+
+  let quotient = 0;
+  let divisor = b;
+  let dividend = a;
+
+  while (dividend >= divisor) {
+    let tempDivisor = divisor, multiple = 1;
+
+    while (dividend >= (tempDivisor << 1)) {
+      tempDivisor <<= 1;
+      multiple <<= 1;
+    }
+
+    dividend -= tempDivisor;
+    quotient += multiple;
+  }
+
+  return quotient;
+}
