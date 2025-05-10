@@ -1,7 +1,8 @@
 .calculator-container {
-  max-width: 600px;
+  max-width: 90%;
+  width: 600px;
   margin: 40px auto;
-  padding: 30px;
+  padding: 20px;
   border: 2px solid #ccc;
   border-radius: 12px;
   background-color: #f9f9f9;
@@ -13,19 +14,21 @@ h1 {
   text-align: center;
   margin-bottom: 25px;
   color: #333;
+  font-size: 1.8rem;
 }
 
 .tab-buttons {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
+  gap: 10px;
   margin-bottom: 20px;
 }
 
 .tab {
-  padding: 10px 20px;
-  margin: 0 5px;
-  border: none;
+  padding: 10px 16px;
   background-color: #eee;
+  border: none;
   border-radius: 20px;
   cursor: pointer;
   font-weight: bold;
@@ -41,16 +44,16 @@ h1 {
 
 .input-row {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   gap: 10px;
   margin-bottom: 15px;
 }
 
 input[type="number"],
 select {
-  flex: 1;
+  width: 100%;
   padding: 10px;
-  font-size: 16px;
+  font-size: 1rem;
   border: 2px solid #ddd;
   border-radius: 8px;
   outline: none;
@@ -67,7 +70,7 @@ select:focus {
   padding: 12px;
   background-color: #34a853;
   color: white;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: bold;
   border: none;
   border-radius: 8px;
@@ -86,6 +89,7 @@ select:focus {
   background-color: #e8f0fe;
   border-left: 5px solid #4285f4;
   border-radius: 8px;
+  font-size: 1rem;
 }
 
 .binary-display {
@@ -94,4 +98,13 @@ select:focus {
   background-color: #f1f1f1;
   border-radius: 8px;
   font-family: monospace;
+  word-wrap: break-word;
+  font-size: 0.95rem;
+}
+
+/* Media query for tablets and up */
+@media (min-width: 600px) {
+  .input-row {
+    flex-direction: row;
+  }
 }
