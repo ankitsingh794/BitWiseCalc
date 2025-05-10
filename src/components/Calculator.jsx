@@ -9,7 +9,7 @@ import {
   bitwiseMultiply,
   bitwiseDivide
 } from "../utils/bitOperations";
-import "../styles/Calculator.css";
+import "../Styles/Calculator.css";
 
 const Calculator = () => {
   const [num1, setNum1] = useState("");
