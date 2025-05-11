@@ -7,7 +7,8 @@ import {
   modPowerOfTwo,
   isPowerOfTwo,
   bitwiseMultiply,
-  bitwiseDivide
+  bitwiseDivide,
+  myPow
 } from "../utils/bitOperations";
 import "../Styles/Calculator.css";
 
@@ -57,6 +58,10 @@ const Calculator = () => {
         res = isPowerOfTwo(a) ? "Yes" : "No";
         desc = `Checks if ${a} is a power of 2 or not`;
         break;
+      case "power":
+        res = myPow(a, b);
+        desc = `Calculates ${a} raised to the power of ${b} (Aⁿ) using exponentiation by squaring`;
+        break;
       default:
         res = "Invalid Operation";
         desc = "";
@@ -88,6 +93,7 @@ const Calculator = () => {
           <option value="setBits">Count Set Bits</option>
           <option value="modPower">Modulo (Power of 2)</option>
           <option value="isPower">Check if Power of 2</option>
+          <option value="power">Power (Aⁿ)</option>
         </select>
       </div>
 

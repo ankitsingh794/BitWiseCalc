@@ -85,3 +85,27 @@ export function bitwiseDivide(a, b) {
 
   return quotient;
 }
+
+// Power(a,b)
+export function myPow(x, n) {
+  let nn = BigInt(n);
+
+  if (nn < 0n) {
+    nn = -nn;
+    x = 1 / x;
+  }
+
+  return powHelp(x, nn);
+}
+
+function powHelp(x, n) {
+  if (n === 0n) return 1.0;
+
+  const half = powHelp(x, n / 2n);
+
+  if (n % 2n === 0n) {
+    return half * half;
+  } else {
+    return half * half * x;
+  }
+}
