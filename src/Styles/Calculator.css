@@ -17,6 +17,12 @@ h1 {
   font-size: 1.8rem;
 }
 
+h4 {
+  color: #667eea;
+  margin: 15px 0 10px 0;
+  font-size: 1rem;
+}
+
 .tab-buttons {
   display: flex;
   flex-wrap: wrap;
@@ -51,17 +57,19 @@ h1 {
 
 input[type="number"],
 select {
-  width: 90%;
+  width: 100%;
   padding: 10px;
   font-size: 1rem;
   border: 2px solid #ddd;
   border-radius: 8px;
   outline: none;
+  box-sizing: border-box;
 }
 
 input[type="number"]:focus,
 select:focus {
   border-color: #4285f4;
+  background-color: #f0f8ff;
 }
 
 .calculate-btn {
@@ -77,10 +85,15 @@ select:focus {
   cursor: pointer;
   margin-top: 10px;
   transition: background-color 0.3s ease;
+  box-sizing: border-box;
 }
 
 .calculate-btn:hover {
   background-color: #2c8b45;
+}
+
+.calculate-btn:active {
+  transform: scale(0.98);
 }
 
 .result-box {
@@ -92,8 +105,31 @@ select:focus {
   font-size: 1rem;
 }
 
+.result-box p {
+  margin: 5px 0;
+  line-height: 1.5;
+}
+
+.result-box p:first-child {
+  font-weight: bold;
+  color: #1a73e8;
+}
+
+.result-box p:last-child {
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.binary-visualization {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+}
+
 .binary-display {
-  margin-top: 15px;
+  margin-top: 20px;
   padding: 12px;
   background-color: #f1f1f1;
   border-radius: 8px;
@@ -102,9 +138,23 @@ select:focus {
   font-size: 0.95rem;
 }
 
+.binary-display p {
+  margin: 5px 0;
+  color: #333;
+  background-color: #fff;
+  padding: 8px;
+  border-radius: 4px;
+  border-left: 3px solid #667eea;
+}
+
 /* Media query for tablets and up */
 @media (min-width: 600px) {
   .input-row {
     flex-direction: row;
+  }
+
+  input[type="number"],
+  select {
+    flex: 1;
   }
 }

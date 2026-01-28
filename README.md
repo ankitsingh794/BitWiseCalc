@@ -1,6 +1,6 @@
 # BitWiseCalc
 
-**BitWiseCalc** is a high-performance web calculator that performs mathematical operations using **bit manipulation techniques**. Built with **React** and **Framer Motion**, it offers fast and educational insights into how binary-level arithmetic works.
+**BitWiseCalc** is An educational, performance-focused web tool that demonstrates how arithmetic and logical operations work at the binary level using **bit manipulation**. Built with **React** and **Framer Motion**, it offers fast and educational insights into how binary-level arithmetic works.
 
 ---
 

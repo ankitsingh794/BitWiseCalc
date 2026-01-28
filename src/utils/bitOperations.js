@@ -98,6 +98,93 @@ export function myPow(x, n) {
   return powHelp(x, nn);
 }
 
+// Helper function to get bit representation with padding
+export function getPaddedBinary(num, bits = 8) {
+  return num.toString(2).padStart(bits, '0');
+}
+
+// Get visualization steps for bitwise addition
+export function getAdditionSteps(a, b) {
+  const maxBits = Math.max(a.toString(2).length, b.toString(2).length) + 1;
+  const binA = getPaddedBinary(a, maxBits);
+  const binB = getPaddedBinary(b, maxBits);
+  
+  const steps = [];
+  let carry = 0;
+  let result = 0;
+  
+  for (let i = binA.length - 1; i >= 0; i--) {
+    const bitA = parseInt(binA[i]);
+    const bitB = parseInt(binB[i]);
+    const sum = bitA + bitB + carry;
+    const resultBit = sum % 2;
+    carry = Math.floor(sum / 2);
+    result = (resultBit << (binA.length - 1 - i)) | result;
+    
+    steps.push({
+      bitA,
+      bitB,
+      carry: carry,
+      result: resultBit,
+      position: binA.length - 1 - i
+    });
+  }
+  
+  return { steps, binA, binB, result };
+}
+
+// Bitwise AND operation
+export function bitwiseAND(a, b) {
+  return a & b;
+}
+
+// Bitwise OR operation
+export function bitwiseOR(a, b) {
+  return a | b;
+}
+
+// Get visualization steps for bitwise AND operation
+export function getANDSteps(a, b) {
+  const maxBits = Math.max(a.toString(2).length, b.toString(2).length);
+  const binA = getPaddedBinary(a, maxBits);
+  const binB = getPaddedBinary(b, maxBits);
+  
+  const steps = [];
+  for (let i = 0; i < binA.length; i++) {
+    const bitA = parseInt(binA[i]);
+    const bitB = parseInt(binB[i]);
+    steps.push({
+      bitA,
+      bitB,
+      result: bitA & bitB,
+      position: i
+    });
+  }
+  
+  return { steps, binA, binB, result: a & b };
+}
+
+// Get visualization steps for bitwise OR operation
+export function getORSteps(a, b) {
+  const maxBits = Math.max(a.toString(2).length, b.toString(2).length);
+  const binA = getPaddedBinary(a, maxBits);
+  const binB = getPaddedBinary(b, maxBits);
+  
+  const steps = [];
+  for (let i = 0; i < binA.length; i++) {
+    const bitA = parseInt(binA[i]);
+    const bitB = parseInt(binB[i]);
+    steps.push({
+      bitA,
+      bitB,
+      result: bitA | bitB,
+      position: i
+    });
+  }
+  
+  return { steps, binA, binB, result: a | b };
+}
+
 function powHelp(x, n) {
   if (n === 0n) return 1.0;
 

@@ -8,8 +8,16 @@ import {
   isPowerOfTwo,
   bitwiseMultiply,
   bitwiseDivide,
-  myPow
+  myPow,
+  getPaddedBinary,
+  bitwiseAND,
+  bitwiseOR
 } from "../utils/bitOperations";
+import BinaryVisualizer, { BinaryOperationVisualizer } from "./BinaryVisualizer";
+import AnimatedOperationVisualizer from "./AnimatedOperationVisualizer";
+import ColumnByColumnVisualizer from "./ColumnByColumnVisualizer";
+import ArithmeticBreakdownVisualizer from "./ArithmeticBreakdownVisualizer";
+import UnaryOperationVisualizer from "./UnaryOperationVisualizer";
 import "../Styles/Calculator.css";
 
 const Calculator = () => {
@@ -41,6 +49,14 @@ const Calculator = () => {
       case "divide":
         res = bitwiseDivide(a, b);
         desc = `Calculates ${a} / ${b} using bit manipulation`;
+        break;
+      case "and":
+        res = bitwiseAND(a, b);
+        desc = `AND operation: Returns 1 only when both bits are 1`;
+        break;
+      case "or":
+        res = bitwiseOR(a, b);
+        desc = `OR operation: Returns 1 when at least one bit is 1`;
         break;
       case "even":
         res = isEven(a) ? "Even" : "Odd";
@@ -89,6 +105,8 @@ const Calculator = () => {
           <option value="subtract">Subtraction</option>
           <option value="multiply">Multiplication</option>
           <option value="divide">Division</option>
+          <option value="and">Bitwise AND</option>
+          <option value="or">Bitwise OR</option>
           <option value="even">is Even / Odd ?</option>
           <option value="setBits">Count Set Bits</option>
           <option value="modPower">Modulo (Power of 2)</option>
@@ -115,8 +133,88 @@ const Calculator = () => {
         <p>{description}</p>
       </div>
 
+      {/* Arithmetic breakdown for addition, subtraction, multiply, divide */}
+      {(operation === "add" || operation === "subtract" || operation === "multiply" || operation === "divide") && 
+        num1 && num2 && result !== "" && (
+        <ArithmeticBreakdownVisualizer
+          num1={parseInt(num1) || 0}
+          num2={parseInt(num2) || 0}
+          operation={operation}
+          result={typeof result === 'number' ? result : 0}
+        />
+      )}
+
+      {/* Column-by-column visualization for AND and OR */}
+      {(operation === "and" || operation === "or") && num1 && num2 && result !== "" && (
+        <ColumnByColumnVisualizer
+          num1={parseInt(num1) || 0}
+          num2={parseInt(num2) || 0}
+          operation={operation}
+          result={typeof result === 'number' ? result : 0}
+        />
+      )}
+
+      {/* Animated visualization for AND/OR (in addition to column view) */}
+      {(operation === "and" || operation === "or") && num1 && num2 && result !== "" && (
+        <AnimatedOperationVisualizer 
+          num1={parseInt(num1) || 0} 
+          num2={parseInt(num2) || 0} 
+          operation={operation}
+          result={typeof result === 'number' ? result : 0}
+          animationSpeed={300}
+        />
+      )}
+
+      {/* Visual representation of binary numbers for other operations */}
+      {(operation === "add" || operation === "subtract" || operation === "multiply" || operation === "divide") && num1 && (
+        <div className="binary-visualization">
+          <h4>Binary Visualization</h4>
+          <BinaryOperationVisualizer 
+            num1={parseInt(num1) || 0} 
+            num2={parseInt(num2) || 0} 
+            operation={operation}
+            result={result !== "" ? (typeof result === 'number' ? result : 0) : 0}
+          />
+        </div>
+      )}
+
+      {/* Unary operation breakdown for even/odd, setBits, isPower, modPower */}
+      {(operation === "even" || operation === "setBits" || operation === "isPower" || operation === "modPower") && 
+        num1 && result !== "" && (
+        <UnaryOperationVisualizer
+          num={parseInt(num1) || 0}
+          operation={operation}
+          result={result}
+        />
+      )}
+
+      {/* Individual bit visualization for single operations */}
+      {(operation === "even" || operation === "setBits" || operation === "isPower") && num1 && (
+        <div className="binary-visualization">
+          <h4>Binary Representation</h4>
+          <BinaryVisualizer 
+            num={parseInt(num1) || 0} 
+            label={`Number A`}
+            showBits={true}
+          />
+        </div>
+      )}
+
+      {/* Modulo visualization */}
+      {operation === "modPower" && num1 && num2 && (
+        <div className="binary-visualization">
+          <h4>Binary Visualization</h4>
+          <BinaryOperationVisualizer 
+            num1={parseInt(num1) || 0} 
+            num2={parseInt(num2) || 0} 
+            operation="mod"
+            result={result !== "" && result !== "Error: B is not a power of 2" ? parseInt(result) : 0}
+          />
+        </div>
+      )}
+
       <div className="binary-display">
-        <h4>Binary Display</h4>
+        <h4>Binary Details</h4>
         <p>{binaryDisplay}</p>
       </div>
     </div>
